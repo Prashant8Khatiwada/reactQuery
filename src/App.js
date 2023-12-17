@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import './App.css'
-import { HomePage } from './components/Home.page'
-import { RQSuperHeroesPage } from './components/RQSuperHeroes.page'
-import { SuperHeroesPage } from './components/SuperHeroes.page'
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import "./App.css";
+import HomePage from "./components/HomePage";
+import SuperHeroesPage from "./components/SuperHeroesPage";
+import RQSuperHeroesPage from "./components/RQSuperHeroesPage";
 
 function App() {
   return (
@@ -11,30 +11,25 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/super-heroes'>Traditional Super Heroes</Link>
+              <Link to="/super-heroes">Traditional Super Heros</Link>
             </li>
             <li>
-              <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
+              <Link to="/rq-super-heroes">RQ Super Heros</Link>{" "}
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path='/super-heroes'>
-            <SuperHeroesPage />
-          </Route>
-          <Route path='/rq-super-heroes'>
-            <RQSuperHeroesPage />
-          </Route>
-          <Route path='/'>
-            <HomePage />
-          </Route>
-        </Switch>
       </div>
+
+      <Routes>
+        <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
+        <Route path="/super-heroes" element={<SuperHeroesPage />} />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
